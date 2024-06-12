@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div>
+    <h1>1.make 和 new 的区别？</h1>
+
+    在 Go 语言中，make 和 new 是两个用来分配内存的内置函数，它们有不同的用途和使用场景。以下是它们的主要区别：<br><br>
+
+    new 函数<br><br>
+
+    用途：new 函数用于分配类型的零值内存，并返回指向该类型的新分配的零值的指针。
+    返回值：返回指向分配类型的指针。
+    适用类型：适用于值类型，如结构体、数组、基础数据类型（int、float、bool 等）。
+    初始化：内存区域会被初始化为类型的零值。例如，new(int) 返回一个 *int，该指针指向的值为 0。<br><br>
+
+    make 函数<br><br>
+
+    用途：make 函数用于分配并初始化引用类型的数据结构，特别是切片（slice）、映射（map）和通道（channel）。
+    返回值：返回初始化后的引用类型的值，而不是指针。
+    适用类型：适用于切片、映射和通道。
+    初始化：不仅分配内存，还会进行适当的初始化。例如，make([]int, 10) 分配一个长度为 10 的整数切片，并将每个元素初始化为零值。
+    <br><br>
+</div>
+
+<div>
+    <h1>2.for range 的时候它的地址会发生变化么？</h1>
+    <br><br>
+    在 Go 中，使用 for range 遍历切片、数组、map 或通道时，迭代变量的地址不会发生变化。每次迭代，迭代变量会被重新赋值为集合中的下一个元素的值，但其地址保持不变。
+    <pre><code>
+        package main
+
+        import "fmt"
+
+        func main() {
+            slice := []int{1, 2, 3, 4, 5}
+
+            for i, v := range slice {
+                fmt.Printf("Index: %d, Value: %d, Address: %p\n", i, v, &v)
+            }
+        }
+    </code></pre>
+</div>
+
+
+
+
+</body>
+</html>
